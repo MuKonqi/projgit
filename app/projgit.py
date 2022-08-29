@@ -18,17 +18,131 @@
 from tkinter import *
 from tkinter import messagebox
 import os
+import getpass
+username=getpass.getuser()
 
-lang_tr="/home/mukonqi/Projelerim/projgit/-tr-.txt"
-lang_en="/home/mukonqi/Projelerim/projgit/-en-.txt"
+lang_en="/home/"+username+"/.config/projgit/lang/en.txt"
+lang_tr="/home/"+username+"/.config/projgit/lang/tr.txt"
 
 def settings():
+    if not os.path.isdir("/home/"+username+"/.config/projgit/theme/") or not os.path.isfile("/home/"+username+"/.config/projgit/theme/dark.txt") and not os.path.isfile("/home/"+username+"/.config/projgit/theme/light.txt"):
+        os.system("cd /home/"+username+"/.config/projgit/ ; mkdir theme")
+        bg="#000000"
+        fg="#FFFFFF"
+        button_bg="#FFFFFF"
+        button_fg="#000000"
+        a_button_bg="#000000"
+        a_button_fg="#FFFFFF"
+    if os.path.isfile("/home/"+username+"/.config/projgit/theme/dark.txt"):
+        bg="#000000"
+        fg="#FFFFFF"
+        button_bg="#FFFFFF"
+        button_fg="#000000"
+        a_button_bg="#000000"
+        a_button_fg="#FFFFFF"
+    elif os.path.isfile("/home/"+username+"/.config/projgit/theme/light.txt"):
+        bg="#FFFFFF"
+        fg="#000000"
+        button_bg="#000000"
+        button_fg="#FFFFFF"
+        a_button_bg="#FFFFFF"
+        a_button_fg="#000000"
+    def dark():
+        os.system("cd /home/"+username+"/.config/projgit/theme/ ; rm * ; touch dark.txt")
+        if os.path.isfile(lang_en):
+            messagebox.showinfo("Information","Successful! Dark theme applied.")
+        if os.path.isfile(lang_tr):
+            messagebox.showinfo("Bilgilendirme","Başarılı! Koyu tema uygulandı.")
+        exit()
+    def light():
+        os.system("cd /home/"+username+"/.config/projgit/theme/ ; rm * ; touch light.txt")
+        if os.path.isfile(lang_en):
+            messagebox.showinfo("Information","Successful! Light theme applied.")
+        if os.path.isfile(lang_tr):
+            messagebox.showinfo("Bilgilendirme","Başarılı! Açık tema uygulandı.")
+        exit()
+    def langen():
+        os.system("cd /home/"+username+"/.config/projgit/lang/ ; rm * ; touch en.txt")
+        messagebox.showinfo("Information","Successful! English language applied.")
+        exit()
+    def langtr():
+        os.system("cd /home/"+username+"/.config/projgit/lang/ ; rm * ; touch tr.txt")
+        messagebox.showinfo("Bilgilendirme","Başarılı! Türkçe dili uygulandı.") 
+        exit()       
+    window2=Tk()
+    window2.config(background=bg)
+    window2.resizable(0, 0)
+    if os.path.isfile(lang_en):
+        window2.title("Settings | Projgit")
+        text11=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="Please select the theme you want to apply.")
+        space11=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
+        button11=Button(window2, text="Dark", command=dark, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font=",arial 10", cursor="hand2", borderwidth="3 ")
+        button12=Button(window2, text="On", command=light, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3" )
+        space2=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n\n")
+        text12=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="You can change your language preferences below.")
+        space12=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
+        button13=Button(window2, text="English (English)", command=langen, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font=",arial 10", cursor="hand2", borderwidth ="3")
+        button14=Button(window2, text="Turkish (Turkish)", command=langtr, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth= "3")
+    if os.path.isfile(lang_tr):
+        window2.title("Ayarlar | Projgit")
+        text11=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="Lütfen uygulamak istediğiniz temayı seçiniz.")
+        space11=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
+        button11=Button(window2, text="Koyu", command=dark, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg,  font=",arial 10", cursor="hand2", borderwidth="3")
+        button12=Button(window2, text="Açık", command=light, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3")
+        space2=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n\n")
+        text12=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="Aşağıdan dil tercihlerinizi değiştirebilirsiniz.")
+        space12=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
+        button13=Button(window2, text="English (İngilizce)", command=langen, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg,  font=",arial 10", cursor="hand2", borderwidth="3")
+        button14=Button(window2, text="Türkçe (Turkish)", command=langtr, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3")
+    text11.pack()
+    space11.pack()
+    button11.pack()
+    button12.pack()
+    space2.pack()
+    text12.pack()
+    space12.pack()
+    button13.pack()
+    button14.pack()
+    mainloop()
+def first_start():
+    bg="#000000"
+    fg="#FFFFFF"
+    button_bg="#FFFFFF"
+    button_fg="#000000"
+    a_button_bg="#000000"
+    a_button_fg="#FFFFFF"
+    os.system("cd /home/"+username+"/.config/; mkdir projgit ; cd projgit ; mkdir lang")
+    def llangen():
+        os.system("cd /home/"+username+"/.config/projgit/lang/ ; rm * ; touch en.txt")
+        messagebox.showinfo("Information","English language applied! When you click 'OK', Projgit settings will open.")
+        lwindow.destroy()
+        settings()
+    def llangtr():
+        os.system("cd /home/"+username+"/.config/projgit/lang/ ; rm * ; touch tr.txt")
+        messagebox.showinfo("Bilgilendirme","İstenilen dil uygulandı! 'OK' tuşuna bastığınızda Projgit ayarları açılacak.")
+        lwindow.destroy()
+        settings()
+    lwindow=Tk()
+    lwindow.title("Choose a language for Projgit")
+    lwindow.config(background=bg)
+    lwindow.resizable(0, 0)
+    text1=Label(lwindow, background=bg, foreground=fg, font="arial 10 bold", text="Please choose a language.\nLütfen bir dil seçin.")
+    text1.pack()
+    space1=Label(lwindow, background=bg, foreground=fg, font="arial 3", text="\n")
+    space1.pack()
+    button1=Button(lwindow, text="English (İngilizce)", command=llangen, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg,  font=",arial 10", cursor="hand2", borderwidth="3")
+    button1.pack()
+    button2=Button(lwindow, text="Türkçe (Turkish)", command=llangtr, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3")
+    button2.pack()
+    mainloop()
+
+def about():
     pass
 
-# if not os.path.isdir("/usr/local/bin/projgit/settings/lang/"):
-#     messagebox.showerror("Warning","Can't found language setting. When you click 'OK' and enter your true password, language settings will open. ")
-#     settings()
-#     exit()
+if not os.path.isdir("/home/"+username+"/.config/projgit/lang/"):
+    messagebox.showerror("Warning","Can't found language setting. When you click 'OK' language settings will open. ")
+    first_start()
+    exit()
 
 bg=""
 fg=""
@@ -36,14 +150,14 @@ button_bg=""
 button_fg=""
 a_button_bg=""
 a_button_fg=""
-if os.path.isfile("/usr/local/bin/projgit/settings/theme/dark.txt"):
+if os.path.isfile("/home/"+username+"/.config/projgit/theme/dark.txt"):
     bg="#000000"
     fg="#FFFFFF"
     button_bg="#FFFFFF"
     button_fg="#000000"
     a_button_bg="#000000"
     a_button_fg="#FFFFFF"
-elif os.path.isfile("/usr/local/bin/projgit/settings/theme/light.txt"):
+elif os.path.isfile("/home/"+username+"/.config/projgit/theme/light.txt"):
     bg="#FFFFFF"
     fg="#000000"
     button_bg="#000000"
@@ -51,18 +165,12 @@ elif os.path.isfile("/usr/local/bin/projgit/settings/theme/light.txt"):
     a_button_bg="#FFFFFF"
     a_button_fg="#000000"
 else:
-    bg="#000000"
-    fg="#FFFFFF"
-    button_bg="#FFFFFF"
-    button_fg="#000000"
-    a_button_bg="#000000"
-    a_button_fg="#FFFFFF"
-    # if os.path.isfile("/usr/local/bin/projgit/settings/lang/en.txt"):
-    #     messagebox.showwarning("Warning","Can't found theme config. When you click 'OK' projgit settings will open.")
-    # elif os.path.isfile("/usr/local/bin/projgit/settings/lang/tr.txt"):
-    #     messagebox.showwarning("Uyarı","Tema yapılandırması bulunamadı, projgit ayarları 'OK' tuşuna bastığınızda açılacaktır.")
-    # settings()
-    # exit()
+    if os.path.isfile("/home/"+username+"/.config/projgit/lang/en.txt"):
+        messagebox.showwarning("Warning","Can't found theme config. When you click 'OK' Projgit settings will open.")
+    elif os.path.isfile("/home/"+username+"/.config/projgit/lang/tr.txt"):
+        messagebox.showwarning("Uyarı","Tema yapılandırması bulunamadı, Projgit ayarları 'OK' tuşuna bastığınızda açılacaktır.")
+    settings()
+    exit()
 
 window=Tk()
 window.config(background=bg)
@@ -89,7 +197,17 @@ def publish_new_repo():
     dir=entry_dir.get()
     os.system('cd "'+dir+'" ; git init')
     publish()
+
 if os.path.isfile(lang_en):
+    menu1=Menu(window)
+    window.config(menu=menu1)
+    file=Menu(menu1, tearoff=0)
+    menu1.add_cascade(label="File",menu=file)
+    file.add_command(label="Quit", command=window.destroy)
+    run=Menu(menu1, tearoff=0)
+    menu1.add_cascade(label="Run",menu=run)
+    run.add_command(label="Settings", command=settings)
+    run.add_command(label="About", command=about)
     text1=Label(window, background=bg, foreground=fg, font="arial 10 bold", text="Please enter the requested information.")
     space1=Label(window, background=bg, foreground=fg, font="arial 3", text="\n")
     text2=Label(window, background=bg, foreground=fg, font="arial 10 bold", text="Project folder:")
@@ -106,6 +224,15 @@ if os.path.isfile(lang_en):
     button1=Button(window, text="Publish for a new repository", command=publish_new_repo, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth ="3")
     button2=Button(window, text="Publish to an existing repository", command=publish, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2 ", borderwidth="3")
 if os.path.isfile(lang_tr):
+    menu1=Menu(window)
+    window.config(menu=menu1)
+    file=Menu(menu1, tearoff=0)
+    menu1.add_cascade(label="Dosya",menu=file)
+    file.add_command(label="Çıkış", command=window.destroy)
+    run=Menu(menu1, tearoff=0)
+    menu1.add_cascade(label="Çalıştır",menu=run)
+    run.add_command(label="Ayarlar", command=settings)
+    run.add_command(label="Hakkında", command=about)
     text1=Label(window, background=bg, foreground=fg, font="arial 10 bold", text="Lütfen istenilen bilgileri girin.")
     space1=Label(window, background=bg, foreground=fg, font="arial 3", text="\n")
     text2=Label(window, background=bg, foreground=fg, font="arial 10 bold", text="Proje klasörü:")
