@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Projgit
+Encoding=UTF-8
+Comment=Yet another simple application for Git written using Python3 and Tkinter
+Path=/usr/local/bin/projgit
+Exec=/usr/bin/projgit
+Terminal=false
+Type=Application
+Categories=Development;
