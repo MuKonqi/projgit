@@ -77,7 +77,7 @@ def settings():
         text11=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="Please select the theme you want to apply.")
         space11=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
         button11=Button(window2, text="Dark", command=dark, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font=",arial 10", cursor="hand2", borderwidth="3 ")
-        button12=Button(window2, text="On", command=light, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3" )
+        button12=Button(window2, text="Light", command=light, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3" )
         space2=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n\n")
         text12=Label(window2, background=bg, foreground=fg, font="arial 10 bold", text="You can change your language preferences below.")
         space12=Label(window2, background=bg, foreground=fg, font="arial 3", text="\n")
@@ -190,7 +190,7 @@ def publish():
     os.system('cd "'+dir+'" ; git branch -M '+branch)
     os.system('cd "'+dir+'" ; git push -u origin '+branch)
     if os.path.isfile(lang_en):
-        messagebox.showinfo("Notification","Successful! Changes published at "+url+"!")
+        messagebox.showinfo("Information","Successful! Changes published at "+url+"!")
     if os.path.isfile(lang_tr):
         messagebox.showinfo("Bilgilendirme","Başarılı! Değişiklikler "+url+" adresinde yayınlandı!")
 def publish_new_repo():
