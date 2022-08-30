@@ -25,8 +25,7 @@ lang_en="/home/"+username+"/.config/projgit/lang/en.txt"
 lang_tr="/home/"+username+"/.config/projgit/lang/tr.txt"
 
 def settings():
-    if not os.path.isdir("/home/"+username+"/.config/projgit/theme/") or not os.path.isfile("/home/"+username+"/.config/projgit/theme/dark.txt") and not os.path.isfile("/home/"+username+"/.config/projgit/theme/light.txt"):
-        os.system("cd /home/"+username+"/.config/projgit/ ; mkdir theme")
+    if not os.path.isfile("/home/"+username+"/.config/projgit/theme/dark.txt") and not os.path.isfile("/home/"+username+"/.config/projgit/theme/light.txt"):
         bg="#000000"
         fg="#FFFFFF"
         button_bg="#FFFFFF"
@@ -111,7 +110,7 @@ def first_start():
     button_fg="#000000"
     a_button_bg="#000000"
     a_button_fg="#FFFFFF"
-    os.system("cd /home/"+username+"/.config/; mkdir projgit ; cd projgit ; mkdir lang")
+    os.system("cd /home/"+username+"/.config/; mkdir projgit ; cd projgit ; mkdir lang theme")
     def llangen():
         os.system("cd /home/"+username+"/.config/projgit/lang/ ; rm * ; touch en.txt")
         messagebox.showinfo("Information","English language applied! When you click 'OK', Projgit settings will open.")
@@ -135,9 +134,6 @@ def first_start():
     button2=Button(lwindow, text="Türkçe (Turkish)", command=llangtr, background=button_bg, foreground=button_fg, activebackground=a_button_bg, activeforeground=a_button_fg, font="arial 10", cursor="hand2", borderwidth="3")
     button2.pack()
     mainloop()
-
-def about():
-    pass
 
 if not os.path.isdir("/home/"+username+"/.config/projgit/lang/"):
     messagebox.showerror("Warning","Can't found language setting. When you click 'OK' language settings will open. ")
@@ -176,6 +172,74 @@ window=Tk()
 window.config(background=bg)
 window.resizable(0, 0)
 window.title("Projgit")
+
+def about():
+    def projgit():
+        if os.path.isfile(lang_en):
+            if os.getuid() == 0:
+                messagebox.showerror("Error","Links cannot be opened while rooted.")
+        elif os.path.isfile(lang_tr):
+            if os.getuid() == 0:
+                messagebox.showerror("Hata","Bağlantılar, kök haklarına sahipken açılamaz.")
+        if not os.getuid() == 0:
+            os.system("xdg-open https://github.com/MuKonqi/projgit")
+    def foss():
+        if os.path.isfile(lang_en):
+            if os.getuid() == 0:
+                messagebox.showerror("Error","Links cannot be opened while rooted.")
+        elif os.path.isfile(lang_tr):
+            if os.getuid() == 0:
+                messagebox.showerror("Hata","Bağlantılar, kök haklarına sahipken açılamaz.")
+        if not os.getuid() == 0:
+            os.system("xdg-open https://www.gnu.org/philosophy/free-sw.tr.html")
+    def developer():
+        if os.path.isfile(lang_en):
+            if os.getuid() == 0:
+                messagebox.showerror("Error","Links cannot be opened while rooted.")
+            if not os.getuid() == 0:
+                os.system("xdg-open https://github.com/MuKonqi")
+        elif os.path.isfile(lang_tr):
+            if os.getuid() == 0:
+                messagebox.showerror("Hata","Bağlantılar, kök haklarına sahipken açılamaz.")
+            if not os.getuid() == 0:
+                os.system("xdg-open https://mukonqi.github.io")
+    def license():
+        if os.path.isfile(lang_en):
+            if os.getuid() == 0:
+                messagebox.showerror("Error","Links cannot be opened while rooted.")
+        elif os.path.isfile(lang_tr):
+            if os.getuid() == 0:
+                messagebox.showerror("Hata","Bağlantılar, kök haklarına sahipken açılamaz.")
+        if not os.getuid() == 0:
+            os.system("xdg-open https://www.gnu.org/licenses/gpl-3.0-standalone.html")
+    if os.path.isfile(lang_en):
+        window=Tk()
+        window.title("About | Projgit")
+        window.config(background=bg)
+        window.resizable(0, 0)
+        space1=Label(window, background=bg, foreground=fg, text="\n", font="arial 7") 
+        button1=Button(window, font="arial 15 bold italic", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Projgit\nYet another simple application for Git written using Python3 and Tkinter", command=projgit)
+        space2=Label(window, background=bg, foreground=fg, text="\n", font="arial 1")
+        button2=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="License: GNU General Public License, Version 3.0 (GPLv3)", command=license)
+        button3=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="License type: Free and Open Source Software (FOSS)", command=foss)
+        button4=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Developer: MuKonqi (Muhammed Abdurrahman)", command=developer)
+    elif os.path.isfile(lang_tr):
+        window=Tk()
+        window.title("Hakkında | Projgit")
+        window.config(background=bg)
+        window.resizable(0, 0)
+        space1=Label(window, background=bg, foreground=fg, text="\n", font="arial 7") 
+        button1=Button(window, font="arial 15 bold italic", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Projgit\nPython3 ve Tkinter kullanılarak yazılmış Git için başka bir basit uygulama.", command=projgit)
+        space2=Label(window, background=bg, foreground=fg, text="\n", font="arial 1")
+        button2=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Lisans: GNU General Public License, Version 3.0 (GPLv3)", command=license)
+        button3=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Lisans türü: Özgür ve Açık Kaynaklı Yazılım (FOSS)", command=foss)
+        button4=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Geliştirici: MuKonqi (Muhammed Abdurrahman)", command=developer)
+    space1.pack()
+    button1.pack()
+    space2.pack()
+    button2.pack()
+    button3.pack()
+    button4.pack()
 
 def publish():
     dir=entry_dir.get()
