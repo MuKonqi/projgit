@@ -229,7 +229,7 @@ def about():
         window.config(background=bg)
         window.resizable(0, 0)
         space1=Label(window, background=bg, foreground=fg, text="\n", font="arial 7") 
-        button1=Button(window, font="arial 15 bold italic", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Projgit\nPython3 ve Tkinter kullanılarak yazılmış Git için başka bir basit uygulama.", command=projgit)
+        button1=Button(window, font="arial 15 bold italic", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Projgit\nPython3 ve Tkinter kullanılarak yazılmış Git için yine bir başka basit uygulama.", command=projgit)
         space2=Label(window, background=bg, foreground=fg, text="\n", font="arial 1")
         button2=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Lisans: GNU General Public License, Version 3.0 (GPLv3)", command=license)
         button3=Button(window, font="arial 12 bold", cursor="hand2", activeforeground=a_button_fg, activebackground=a_button_bg, background=a_button_bg, foreground=a_button_fg, text="Lisans türü: Özgür ve Açık Kaynaklı Yazılım (FOSS)", command=foss)
