@@ -62,8 +62,8 @@ arch_pacman_support="true" # Options: true and false
 arch_pacman_dependencies="git python3 tk" # Options: "dependencies" and any
 opensuse_zypper_support="true" # Options: true and false
 opensuse_zypper_dependencies="git python python-tk" # Options: "dependencies" and any
-rhel_yum_support="true"
-rhel_yum_dependencies="git python3 python3-tkinter"
+rhel_yum_support="true" # Options: true and false
+rhel_yum_dependencies="git python3 python3-tkinter" # Options: "dependencies" and any
 solus_eopkg_support="true" # Options: true and false
 solus_eopkg_dependencies="git python3 python3-tkinter" # Options: "dependencies" and any
 void_xbps_support="false" # Options: true and false
@@ -180,9 +180,9 @@ def control_and_install():
             main_install()
         elif debian_apt_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
 
     elif os.path.isfile("/etc/fedora-release"):
@@ -193,9 +193,9 @@ def control_and_install():
             main_install()
         elif fedora_dnf_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isfile("/bin/pacman") or os.path.isfile("/usr/bin/pacman"):
         if arch_pacman_dependencies != any and arch_pacman_support == "true":
@@ -205,9 +205,9 @@ def control_and_install():
             main_install()
         elif arch_pacman_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isfile("/usr/bin/yum"):
         if rhel_yum_dependencies != any and rhel_yum_support == "true":
@@ -217,9 +217,9 @@ def control_and_install():
             main_install()
         elif rhel_yum_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isfile("/usr/bin/zypper"):
         if opensuse_zypper_dependencies != any and opensuse_zypper_support == "true":
@@ -229,9 +229,9 @@ def control_and_install():
             main_install()
         elif opensuse_zypper_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isfile("/etc/solus-release"):
         if solus_eopkg_dependencies != any and solus_eopkg_support == "true":
@@ -241,9 +241,9 @@ def control_and_install():
             main_install()
         elif solus_eopkg_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isfile("/etc/pisilinux-release"):
         if pisi_pisi_dependencies != any and pisi_pisi_support == "true":
@@ -253,9 +253,9 @@ def control_and_install():
             main_install()
         elif pisi_pisi_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif os.path.isdir("/etc/xbps.d"):
         if void_xbps_dependencies != any and void_xbps_support == "true":
@@ -265,23 +265,23 @@ def control_and_install():
             main_install()
         elif void_xbps_support == "false":
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")            
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")            
 
     elif platform == "linux":
         if other_gnulinux_support == "true":
             main_install()
         else:
             if lang == "default" or lang == "en":
-                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\napiutaller is shutting down...")
+                exit("I'm sorry, you can't use "+appname+"! Because your distro not supported from "+appname+".\nApiutaller is shutting down...")
             if lang == "default" or lang == "tr":
-                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımın "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")
+                exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin dağıtımınız"+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")
     else:
         if lang == "default" or lang == "en":
-            exit("I'm sorry, you can't use "+appname+"! Because your OS not supported from "+appname+".\napiutaller is shutting down...")
+            exit("I'm sorry, you can't use "+appname+"! Because your OS not supported from "+appname+".\nApiutaller is shutting down...")
         if lang == "default" or lang == "tr":
-            exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin İS'niz "+appname+" tarafından desteklenmiyor.\napiutaller kapatılıyor...")
+            exit("Üzgünüm, siz "+appname+" uygulamasını kullanamazsınız! Çünkü sizin İS'niz "+appname+" tarafından desteklenmiyor.\nApiutaller kapatılıyor...")
     
 
 
@@ -344,10 +344,10 @@ def main_uninstall():
 
 def info():
     if lang == "default" or lang == "en":
-        print("Welcome to Apiutaller "+Apiutaller+"!\napiutaller is under the GPLv3 license.\nDeveloper of Apiutaller is MuKonqi (Muhammed Abdurrahman).")
+        print("Welcome to Apiutaller "+Apiutaller+"!\nApiutaller is under the GPLv3 license.\nDeveloper of Apiutaller is MuKonqi (Muhammed Abdurrahman).")
         ioa=input("What do you want to do at the moment?\nOptions: install (for "+appname+"), uninstall (for "+appname+"), exit\nAnswer: ")
     if lang == "default" or lang == "tr":
-        print("Apiutaller "+Apiutaller+" programına hoşgeldiniz!\napiutaller GPLv3 lisansı altındadır.\napiutaller programının geliştiricisi MuKonqi (Muhammed Abdurrahman) idir.")
+        print("Apiutaller "+Apiutaller+" programına hoşgeldiniz!\nApiutaller GPLv3 lisansı altındadır.\nApiutaller programının geliştiricisi MuKonqi (Muhammed Abdurrahman) idir.")
         ioa=input("Şuan ne yapmak istersiniz?\nSeçenekler: kur ("+appname+" için), sil ("+appname+" için), çıkış\nCevap: ")
     if ioa == "install" or ioa == "kur":
         control_and_install()
@@ -386,7 +386,7 @@ def license():
         if license == "y":
             operation()
         if license == "n":
-            exit("I'm sorry, you can't use "+appname+" and Apiutaller, because you don't agree licenses!\napiutaller is shutting down...")
+            exit("I'm sorry, you can't use "+appname+" and Apiutaller, because you don't agree licenses!\nApiutaller is shutting down...")
     if lang == "default" or lang == "tr":    
         license=input("Merhabalar! Ben "+appname+" uygulamasını kurmayı ya da silmeyi deneyeceğim.\nBen GPLv3 ile lisanslıyım!\n"+appname+" ise "+licensename+" ile lisanslı!\nBunları kabul ediyor musunuz?\nSeçenekler: e ya da h\nCevap: ")
         if license == "e":
