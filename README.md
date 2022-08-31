@@ -17,3 +17,5 @@ Git
 Bir GNU/Linux dağıtımı
 ### Lisans:
 GPLv3
+### Installer and uninstaller: / Kurucu ve kaldırıcı:
+[Apiutaller](https://github.com/MuKonqi/apiutaller)
