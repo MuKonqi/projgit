@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (C) 22022 MuKonqi (Muhammed Abdurrahman)
+# Copyright (C) 2022 MuKonqi (Muhammed Abdurrahman)
 
 # Projgit is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
