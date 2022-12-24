@@ -247,7 +247,6 @@ def publish():
     commit=entry_commit.get()
     url=entry_url.get()
     branch=entry_branch.get()
-    print(dir+files+commit+url+branch)
     os.system('cd "'+dir+'" ; git add '+files)
     os.system('cd "'+dir+'" ; git commit -m "'+commit+'"')
     os.system('cd "'+dir+'" ; git remote add origin '+url)
